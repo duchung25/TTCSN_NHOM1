@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="dangky.css">
+    <link rel="stylesheet" href="giohang.css">
+    <style>
+        .a1{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="logo.jpg" alt="Logo"></a>
+            <h1><a href="index.html" class="a1">Sneakers</a></h1>
+        </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
+            <button>Tim kiếm</button>
+            <div class="search-keywords">
+                Từ khóa: 
+                <a href="#">Adidas</a>
+                <a href="#">Nike</a>
+                <a href="#">Jordan</a>
+                <a href="#">Bitis</a>
+            </div>
+        </div>
+        <div class="user-actions">
+            <a href="dangnhap.html"><img src="icon3.jpg" alt="User Icon"> Tài khoản</a>
+            <a href="#" class="cart-toggle"><img src="icon2.png" alt="Cart Icon"> Giỏ hàng</a>
+        </div>
+    </header>
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-header">
+            <h2>GIỎ HÀNG</h2>
+            <button onclick="toggleCart()">×</button>
+        </div>
+    
+        <div class="cart-content">
+            <div class="cart-item">
+                <img src="giohang1.jpg" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4>GIÀY Nike Air Force 1</h4>
+                    <p>520.000đ</p>
+                    <div class="quantity-input">
+                        <span>Số lượng:</span>
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="cart-item">
+                <img src="giohang2.jpg" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4>GIÀY Adidas Stan Smith</h4>
+                    <p>680.000đ</p>
+                    <div class="quantity-input">
+                        <span>Số lượng:</span>
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="cart-item">
+                <img src="giohang3.jpg" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4>Converse Chuck Taylor All Star</h4>
+                    <p>1.000.000đ</p>
+                    <div class="quantity-input">
+                        <span>Số lượng:</span>
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="cart-footer">
+            <p>Tổng thanh toán: 2.200.000đ</p>
+            <button>MUA NGAY</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCart() {
+            const cartOverlay = document.getElementById('cartOverlay');
+            cartOverlay.classList.toggle('active');
+        }
+    
+        function changeQuantity(button, change) {
+            const input = button.parentElement.querySelector('input');
+            let value = parseInt(input.value);
+            value += change;
+            if (value < 1) value = 1;
+            input.value = value;
+            updateTotal();
+        }
+    
+        function updateTotal() {
+            const items = document.querySelectorAll('.cart-item');
+            let total = 0;
+            items.forEach(item => {
+                const price = parseFloat(item.querySelector('p').textContent.replace('đ', '').replace('.', ''));
+                const quantity = parseInt(item.querySelector('input').value);
+                total += price * quantity;
+            });
+            document.querySelector('.cart-footer p').textContent = `Tổng thanh toán tạm tính: ${total.toLocaleString('vi-VN')}đ`;
+        }
+    
+        document.querySelector('.cart-toggle').addEventListener('click', toggleCart);
+    </script>
+    <div class="login-container">
+        <h2>Đăng ký</h2>
+        <div>
+            <input type="email" id="email" placeholder="Email hoặc số điện thoại" required>
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <input type="password2" id="password2" placeholder="Nhập lại mật khẩu" required>
+            <button>Đăng ký</button>
+            <a href="dangnhap.html" class="back-link">Quay lại đăng nhập</a>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm nam</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="giohang.css">
+    <link rel="stylesheet" href="spnam.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        .a1{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="logo.jpg" alt="Logo"></a>
+            <h1><a href="index.html" class="a1">Sneakers</a></h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
+            <button>Tim kiếm</button>
+            <div class="search-keywords">
+                Từ khóa: 
+                <a href="#">Adidas</a>
+                <a href="#">Nike</a>
+                <a href="#">Bitis</a>
+                <a href="#">Converse</a>
+            </div>
+        </div>
+        <div class="user-actions">
+            <a href="dangnhap.html"><img src="icon3.jpg" alt="User Icon"> Tài khoản</a>
+            <a href="#" class="cart-toggle"><img src="icon2.png" alt="Cart Icon"> Giỏ hàng</a>
+        </div>
+    </header>
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-header">
+            <h2>GIỎ HÀNG</h2>
+            <button onclick="toggleCart()">×</button>
+        </div>
+    
+        <div class="cart-content">
+            <div class="cart-item">
+                <img src="giohang1.jpg" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4>GIÀY Nike Air Force 1</h4>
+                    <p>520.000đ</p>
+                    <div class="quantity-input">
+                        <span>Số lượng:</span>
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="cart-item">
+                <img src="giohang2.jpg" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4>GIÀY Adidas Stan Smith</h4>
+                    <p>680.000đ</p>
+                    <div class="quantity-input">
+                        <span>Số lượng:</span>
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="cart-item">
+                <img src="giohang3.jpg" alt="Product Image">
+                <div class="cart-item-details">
+                    <h4>Converse Chuck Taylor All Star</h4>
+                    <p>1.000.000đ</p>
+                    <div class="quantity-input">
+                        <span>Số lượng:</span>
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="cart-footer">
+            <p>Tổng thanh toán: 2.200.000đ</p>
+            <button><a href="thanhtoan.html">MUA NGAY</a></button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCart() {
+            const cartOverlay = document.getElementById('cartOverlay');
+            cartOverlay.classList.toggle('active');
+        }
+    
+        function changeQuantity(button, change) {
+            const input = button.parentElement.querySelector('input');
+            let value = parseInt(input.value);
+            value += change;
+            if (value < 1) value = 1;
+            input.value = value;
+            updateTotal();
+        }
+    
+        function updateTotal() {
+            const items = document.querySelectorAll('.cart-item');
+            let total = 0;
+            items.forEach(item => {
+                const price = parseFloat(item.querySelector('p').textContent.replace('đ', '').replace('.', ''));
+                const quantity = parseInt(item.querySelector('input').value);
+                total += price * quantity;
+            });
+            document.querySelector('.cart-footer p').textContent = `Tổng thanh toán tạm tính: ${total.toLocaleString('vi-VN')}đ`;
+        }
+    
+        document.querySelector('.cart-toggle').addEventListener('click', toggleCart);
+    </script>
+    <menu>
+        <div class="navbar">
+            <a href="index.html">TRANG CHỦ</a>
+            <a href="gioithieu.html">Giới thiệu</a>
+            <a href="spnam.html">NAM</a>
+            <a href="spnu.html">NỮ</a>
+            <a href="spgiamgia.html" class="sale">UP TO 50%</a>
+            <a href="sptreem.html">Trẻ em</a>
+            <a href="tintuc.html">Tin tức</a>
+            <a href="lienhe.html">Liên hệ</a>
+        </div>
+    </menu>
+    <div class="container">
+        <div class="tieude">
+            <h1>GIÀY NAM SNEAKER</h1>
+        </div>
+        <div class="tabs">
+            <a href="#">Tất cả giày nam</a>
+            <a href="#">Hàng mới về</a>
+            <a href="#">Hàng hot</a>
+            <a href="#">Giày chạy bộ</a>
+            <a href="#">Giày bóng đá</a>
+            <a href="#">Giày tập</a>
+            <a href="#">Lifestyle</a>
+            <a href="#">Giày bóng rổ</a>
+            <a href="#">Giày quần vợt</a>
+        </div>
+        <div class="sort">
+            <label>Lọc & Sắp xếp</label>
+        </div>
+        <div class="products">
+            <div class="product-card">
+                <img src="Adidas/adidas1.jpg" alt="Giày Samba OG">
+                <p>Giày Samba OG</p>
+                <p class="info">16 colours · Originals</p>
+                <p class="price">2.700.000đ</p>
+            </div>
+            <div class="product-card">
+                <img src="Adidas/adidas2.jpg" alt="Giày Ultraboost 5x">
+                <p>Giày Ultraboost 5x</p>
+                <p class="info">8 colours · Nam Chạy</p>
+                <p class="price">4.900.000đ</p>
+            </div>
+            <div class="product-card">
+                <img src="Nike/nike1.webp" alt="Nike air">
+                <p>Nike air</p>
+                <p class="info">3 colours</p>
+                <p class="price">4.900.000đ</p>
+            </div>
+            <div class="product-card">
+                <img src="Nike/nike2.jpg" alt="">
+                <p>Nike OG</p>
+                <p class="info">16 colours · Originals</p>
+                <p class="price">1.800.000đ</p>
+            </div>
+            <div class="product-card">
+                <img src="Bitis/bitis1.jpg" alt="">
+                <p>Bitis hunter</p>
+                <p class="info">16 colours · Originals</p>
+                <p class="price">2.700.000đ</p> 
+            </div>
+            <div class="product-card">
+                <img src="Bitis/bitis2.jpg" alt="">
+                <p>Bitis 5x</p>
+                <p class="info">8 colours · Nam Chạy</p>
+                <p class="price">2.700.000đ</p> 
+            </div>
+            <div class="product-card">
+                <img src="Conve/co1.jpg" alt="Converse cổ trung">
+                <p>Converse cổ trung</p>
+                <p class="info">3 colours</p>
+                <p class="price">4.900.000đ</p>
+            </div>
+            <div class="product-card">
+                <img src="Conve/co2.jpg" alt="Converse cổ cao">
+                <p>Converse cổ cao</p>
+                <p class="info">16 colours · Originals</p>
+                <p class="price">1.800.000đ</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-column">
+            <h4>Công Ty TNHH Giày Sneakers Việt Nam</h4>
+            <p>Địa chỉ: Thành phố Bắc Ninh, Tỉnh Bắc Ninh</p>
+            <p>Số điện thoại: 0968590668</p>
+            <p>Email: hungbnjkl@gmail.com</p>
+            <p>© Bản quyền thuộc về Nhóm 1 | Cung cấp bởi DucHung</p>
+        </div>
+        <div class="footer-column">
+            <h4>Chính Sách</h4>
+            <p><a href="#">Chính sách vận chuyển</a></p>
+            <p><a href="#">Chính sách đổi trả hàng</a></p>
+            <p><a href="#">Chính sách bảo mật thông tin</a></p>
+            <p><a href="#">Chính sách kiểm hàng</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>Hỗ Trợ Khách Hàng</h4>
+            <p><a href="#">Giới thiệu</a></p>
+            <p><a href="#">Quy định chung</a></p>
+            <p><a href="#">Hệ thống cửa hàng</a></p>
+            <p><a href="#">Kiểm Tra Đơn Hàng</a></p>
+        </div>
+        <div class="footer-column">
+            <div class="social-icons">
+                <a href="#"><img src="icfooter1.webp" alt="Facebook"></a>
+                <a href="#"><img src="icfooter2.webp" alt="Zalo"></a>
+                <a href="#"><img src="icfooter3.webp" alt="TikTok"></a>
+            </div>
+            <div class="contact-icons">
+                <a href="#"><img src="iclienhe1.svg" alt="Zalo Chat"></a>
+                <a href="#"><img src="iclienhe2.svg" alt="Phone"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>SNEAKERS</p>
+        <p>Nghỉ vụ của người bán và nghỉ lễ của khách hàng trong mỗi giao dịch</p>
+    </div>
+</body>
+</html>
